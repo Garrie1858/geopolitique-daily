@@ -25,7 +25,7 @@ def get_news():
 
 def generate_summary(news_text):
     genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel("gemini-1.5-flash-8b")
+    model = genai.GenerativeModel("gemini-2.0-flash")
     prompt = f"""Tu es un expert en géopolitique. Voici les titres d'actualité du jour :
 
 {news_text}
