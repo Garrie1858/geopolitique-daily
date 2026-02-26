@@ -15,7 +15,7 @@ def get_news():
     regions = ["Europe", "Middle East", "China", "Russia Ukraine", "Africa", "Americas"]
     articles = []
     for region in regions:
-        url = f"https://newsapi.org/v2/everything?q={region}+geopolitics&language=fr&sortBy=publishedAt&pageSize=5&apiKey={NEWS_API_KEY}"
+        url = f"https://newsapi.org/v2/everything?q={region}+geopolitics&language=fr&sortBy=publishedAt&pageSize=2&apiKey={NEWS_API_KEY}"
         response = requests.get(url)
         data = response.json()
         if data.get("articles"):
