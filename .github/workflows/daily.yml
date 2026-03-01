@@ -1,24 +1,30 @@
-name: Résumé Géopolitique Quotidien
+name: Daily Emails
 
 on:
   schedule:
-    - cron: '0 7 * * *'
+    - cron: '0 6 * * *'   # 07:00 heure belge (UTC+1)
   workflow_dispatch:
 
 jobs:
-  send-summary:
+  send-daily-emails:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
       - name: Install dependencies
-        run: pip install requests google-generativeai
-      - name: Run script
+        run: pip install requests google-genai
+
+      - name: 🌍 Résumé géopolitique
         env:
-          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+          NEWS_API_KEY:   ${{ secrets.NEWS_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EMAIL_USER:     ${{ secrets.EMAIL_USER }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: python main.py
