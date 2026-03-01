@@ -57,7 +57,7 @@ Rédige un résumé géopolitique mondial structuré par région, en français, 
 Pour chaque région mentionnée, donne les points essentiels. Commence directement sans introduction générale."""
 
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="gemini-2.0-flash-lite",
         contents=prompt,
     )
     return response.text.strip()
